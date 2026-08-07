@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WP Pulse</title>
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="pulse.css">
+</head>
+<body>
+
+<main id="app" class="start">
+
+  <header id="bar">
+    <a class="wordmark" href="./" title="Start over"><svg class="logo" viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="13.5" stroke="currentColor" stroke-width="1.6" opacity=".28"/><path d="M3.5 16H9l2.4-6.4L15.4 22l3-6H28.5" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span>WP Pulse</span></a>
+    <form id="form" autocomplete="off">
+      <input id="url" type="text" placeholder="yoursite.com" spellcheck="false" autocapitalize="off">
+    </form>
+    <nav class="views">
+      <span class="on">Classic</span>
+      <a id="v2-link" href="v2.html" title="Full dashboard: score, plugin table, PageSpeed">Dashboard</a>
+    </nav>
+    <div class="bar-actions">
+      <button id="rerun" type="button" title="Re-run (r)" hidden>&#8635;</button>
+      <button id="settings-toggle" type="button" title="Proxy settings">&#8943;</button>
+    </div>
+  </header>
+
+  <div id="hint">
+    <p class="hint-lead">WordPress sites. No login needed to start.</p>
+
+    <ol class="flow-strip">
+      <li>
+        <span class="fi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none">
+          <path d="M9.5 14.5 14.5 9.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          <path d="M11 7.5 12.6 6a3.9 3.9 0 0 1 5.5 5.5L16.5 13" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          <path d="M13 16.5 11.4 18a3.9 3.9 0 0 1-5.5-5.5L7.5 11" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        </svg></span>
+        <b>Paste a URL</b>
+        <span>Any WordPress site</span>
+      </li>
+      <li>
+        <span class="fi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none">
+          <circle cx="11" cy="11" r="6.2" stroke="currentColor" stroke-width="1.7"/>
+          <path d="m15.6 15.6 3.4 3.4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+          <path d="M8.4 11h1.7l1 -2.2 1.4 4.4 .9 -2.2h2.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg></span>
+        <b>It reads the site</b>
+        <span>Plus three public databases</span>
+      </li>
+      <li>
+        <span class="fi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none">
+          <path d="M7 4.5h10v15l-5-3.6-5 3.6z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+        </svg></span>
+        <b>Add the bookmark</b>
+        <span>Called WP Pulse</span>
+      </li>
+      <li>
+        <span class="fi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none">
+          <path d="M5.5 6.5h7M5.5 11h9M5.5 15.5h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          <path d="m14.5 16.6 2 2 4-4.4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg></span>
+        <b>Get the list</b>
+        <span>Ranked, ready to send</span>
+      </li>
+    </ol>
+  </div>
+
+  <details id="howto">
+    <summary>How to set it up <span>2 minutes, once</span></summary>
+
+    <ol class="steps">
+      <li>
+        <h4>Drag the bookmark to your bookmarks bar</h4>
+        <p>Open <a href="install.html">the bookmark page</a> and drag the chip onto the bar.
+        Once, ever, not per site. Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd> if the bar is hidden.</p>
+        <div class="mock mock-bar">
+          <span class="mb-tab">Docs</span>
+          <span class="mb-tab">Inbox</span>
+          <span class="mb-tab drag">&#9889; WP Pulse</span>
+          <span class="mb-cursor" aria-hidden="true"></span>
+        </div>
+      </li>
+
+      <li>
+        <h4>Log into the client&rsquo;s wp-admin</h4>
+        <p>Exactly as you always do. Nothing is asked for your password, and nothing
+        is typed into WP Pulse.</p>
+        <div class="mock mock-url">https://clientsite.com/wp-admin/</div>
+      </li>
+
+      <li>
+        <h4>Click <b>&#9889; WP Pulse</b> on any admin screen</h4>
+        <p>It reads nine admin pages at once and copies the result. It only reads,
+        it never changes anything.</p>
+        <div class="mock mock-card">
+          <span class="mc-h">&#10003; WP PULSE</span>
+          <span class="mc-r"><i>core</i><b>7.0.2</b></span>
+          <span class="mc-r"><i>php</i><b>8.5.7</b></span>
+          <span class="mc-r"><i>plugins</i><b>28&nbsp; 23 active</b></span>
+          <span class="mc-r"><i>updates</i><b>5</b></span>
+          <span class="mc-n">Copied. Paste into the WP Pulse app.</span>
+        </div>
+      </li>
+
+      <li>
+        <h4>Come back here and paste</h4>
+        <p>Press <kbd>Ctrl</kbd>+<kbd>V</kbd>. It is remembered per site, so you only
+        paste again when you want fresher numbers.</p>
+        <div class="mock mock-paste">Paste bookmarklet data here&nbsp; (Ctrl+V)</div>
+      </li>
+    </ol>
+  </details>
+
+  <ul id="recent"></ul>
+
+  <section id="settings" hidden>
+    <label for="proxy">Proxy URL</label>
+    <input id="proxy" type="text" placeholder="http://localhost:8787/proxy" spellcheck="false">
+    <p>Needed for core and plugin versions, tags, headers, robots, sitemap. Leave empty for fingerprint only.</p>
+    <p class="settings-note">Scans and pasted wp-admin data are kept in this browser so a
+    reload does not lose them. Nothing is uploaded.</p>
+    <button id="clear-saved" type="button" class="btn-danger">Clear saved scans</button>
+  </section>
+
+  <section id="results" hidden>
+
+    <div id="toast" hidden></div>
+
+    <div id="loader" hidden>
+      <span class="spin"></span>
+      <span id="loader-text">Reading wp-admin data&hellip;</span>
+    </div>
+
+    <div id="ask" hidden>
+      <div class="ask-t">
+        <strong>Add wp-admin details for the full picture</strong>
+        <p>Plugin versions, pending updates, admin accounts, PHP and server settings.
+        Log in as normal, click the <b>WP&nbsp;Pulse</b> bookmark, then paste below.
+        <span id="ask-why"></span></p>
+      </div>
+      <a href="install.html">Get the bookmark</a>
+    </div>
+
+    <div id="summary"></div>
+
+    <details class="panel" id="p-plugins" open hidden>
+      <summary>Plugins <span id="plugin-count" class="count"></span></summary>
+      <div id="plugins"></div>
+    </details>
+
+    <details class="panel" id="p-issues" open>
+      <summary>Issues <span id="issue-count" class="count"></span></summary>
+      <div id="issues"></div>
+    </details>
+
+    <details class="panel" id="p-types" hidden>
+      <summary>Content <span id="types-count" class="count"></span></summary>
+      <div id="types"></div>
+    </details>
+
+    <details class="panel" id="p-site">
+      <summary>Site <span id="site-count" class="count"></span></summary>
+      <div id="site"></div>
+    </details>
+
+    <details class="panel" id="p-stack" hidden>
+      <summary>Stack <span id="stack-count" class="count"></span></summary>
+      <div id="stack"></div>
+    </details>
+
+    <textarea id="drop" hidden rows="1" spellcheck="false"
+      placeholder="Paste bookmarklet data here  (Ctrl+V)"></textarea>
+
+    <footer id="foot">
+      <span id="needs-login"></span>
+      <span class="foot-actions">
+        <a id="bm-link" href="install.html">Bookmarklet</a>
+        <button id="copy" type="button">Copy for Claude</button>
+      </span>
+    </footer>
+
+  </section>
+
+</main>
+
+<script src="pulse.js"></script>
+</body>
+</html>

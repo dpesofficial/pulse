@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WP Pulse — bookmarklet</title>
+<link rel="stylesheet" href="pulse.css">
+<style>
+  .prose { max-width: 560px; }
+  .prose p { margin: 0 0 14px; }
+  .prose ol { margin: 0 0 20px 18px; }
+  .prose li { margin-bottom: 7px; }
+  .drag {
+    display: inline-block; margin: 6px 0 4px;
+    padding: 11px 20px; border: 1px solid var(--ink); border-radius: 3px;
+    color: var(--ink); text-decoration: none; font-size: 15px;
+    cursor: grab; user-select: none;
+  }
+  .drag:active { cursor: grabbing; }
+  .step { color: var(--dim); font-size: 14px; }
+  .back { font-size: 13px; color: var(--dim); text-decoration: none; }
+  .back:hover { color: var(--ink); }
+  .warn { font-size: 13px; color: var(--dim); border-top: 1px solid var(--rule);
+          padding-top: 16px; margin-top: 28px; }
+</style>
+</head>
+<body>
+
+<main id="app" class="prose" style="padding-top:60px">
+
+  <a class="back" href="./">&larr; WP Pulse</a>
+
+  <h2 style="margin-top:26px">Bookmarklet</h2>
+
+  <p>Reads the things a public scan cannot see: real plugin versions, pending
+  updates, core version, PHP, admin accounts, spam. No password, no setup per site.</p>
+
+  <p class="step">Drag this to your bookmarks bar. <strong>Already have one? Delete it first</strong>,
+  a bookmarklet is a snapshot of the code from when you dragged it.</p>
+
+  <a class="drag" id="bm" href="#" onclick="return false">&#9889; WP Pulse</a>
+
+  <p class="step" id="size"></p>
+
+  <h2 style="margin-top:34px">Using it</h2>
+
+  <ol>
+    <li>Log into any client's wp-admin, as you normally would.</li>
+    <li>Click <strong>&#9889; WP Pulse</strong> in your bookmarks bar. Any admin screen works.</li>
+    <li>It reads every screen it needs and copies the result.</li>
+    <li>Switch back to WP Pulse and press <strong>Ctrl+V</strong>. The unknown rows fill in.</li>
+  </ol>
+
+  <h2 style="margin-top:34px">What it does to the site</h2>
+
+  <p>Nothing. Every request is a GET to a fixed admin page with no action parameter.
+  It never submits a form, clicks a button, follows a link, or writes anything.
+  It reads the screens you would have opened yourself, then gets out of the way.</p>
+
+  <p>Source is right here: <a href="collect.js" class="back" style="text-decoration:underline">collect.js</a>.
+  Read it before you trust it.</p>
+
+  <div class="warn">
+    <p><strong>If nothing happens when you click it:</strong> the site has a Content-Security-Policy
+    that blocks bookmarklets. Uncommon on WordPress, but some hardening plugins add one.
+    Nothing to fix, use Copy for Claude on that site instead.</p>
+    <p><strong>It cannot run on a schedule.</strong> It needs your click. Overnight checks
+    across many sites would need Application Passwords, which is a different build.</p>
+  </div>
+
+</main>
+
+<script>
+/* The bookmarklet is built from collect.js at page load, so there is no build
+   step and the source you can read is exactly the source that runs. */
+fetch('collect.js')
+  .then(r => r.text())
+  .then(src => {
+    const href = 'javascript:' + encodeURIComponent(src);
+    const a = document.getElementById('bm');
+    a.href = href;
+    a.removeAttribute('onclick');
+    document.getElementById('size').textContent =
+      'v' + ((src.match(/BM_VERSION\s*=\s*(\d+)/) || [])[1] || '?') + ' · '
+      + Math.round(src.length / 1024) + ' KB, self-contained, loads nothing at runtime.';
+  })
+  .catch(() => {
+    document.getElementById('size').textContent = 'Could not load collect.js.';
+  });
+</script>
+
+</body>
+</html>

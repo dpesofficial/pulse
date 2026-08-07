@@ -1,0 +1,14 @@
+# Never commit the PageSpeed API key. GitHub Pages repos are public on free
+# accounts, and an unrestricted Google key in a public repo is a key anyone
+# can spend against your quota.
+config.local.js
+
+node_modules/
+.DS_Store
+
+# Internal WPC documents. They name clients and contain commercial reasoning,
+# so they must never reach a public repo. Kept locally, never committed.
+*Product-Plan*.md
+*Build-Plan*.md
+*Design-Spec*.md
+explainer.html
